@@ -15,13 +15,21 @@ function App() {
       <input
         type="text"
         value={state.name}
-        onChange={(e) => setState({ name: e.target.value })}
+        onChange={(e) =>
+          setState({ name: e.target.value }, () => {
+            console.log('changing name');
+          })
+        }
       />
       <label>Email</label>
       <input
         type="text"
         value={state.email}
-        onChange={(e) => setState({ email: e.target.value })}
+        onChange={(e) =>
+          setState((state) => {
+            return { email: e.target.value };
+          })
+        }
       />
       <label>Phone</label>
       <input
